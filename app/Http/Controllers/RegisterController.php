@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NewUser;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,6 +28,8 @@ class RegisterController extends Controller
             ]);
 
         Auth::login($user);
+
+        NewUser::dispatch($user);
 
         return redirect()->intended(route('main'));
     }
