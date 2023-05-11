@@ -25,6 +25,7 @@ class RegisterController extends Controller
                 'name' => $data['name'],
                 'password' => Hash::make($data['password']),
                 'email' => $data['email'],
+                'is_admin' => false,
             ]);
 
         Auth::login($user);

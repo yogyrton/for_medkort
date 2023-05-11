@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('slug');
             $table->string('author');
             $table->string('description');
-            $table->integer('rating');
+            $table->integer('rating')->default(mt_rand(1, 10));
             $table->string('cover');
 
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();

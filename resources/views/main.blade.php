@@ -4,7 +4,6 @@
 
 @section('content')
 
-
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
@@ -20,25 +19,37 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Эскиз</text></svg>
+                @forelse($books as $book)
 
-                        <div class="card-body">
-                            <p class="card-text">Это более широкая карточка с вспомогательным текстом ниже как естественный ввод к дополнительному контенту. Этот контент немного длиннее.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Редактировать</button>
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('/storage/' . $book->cover) }}"><title>
+                                    {{ $book->title }}</title>
+                                <rect width="100%" height="100%" fill="#55595c"/>
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
+                            </img>
+
+                            <div class="card-body">
+                                <p class="card-text"><b>Название: </b>{{ $book->title }}</p>
+                                <p class="card-text"><b>Категория: </b>{{ $book->category->title }}</p>
+                                <p class="card-text"><b>Описание: </b>{{ $book->description }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть комментарии</button>
+                                    </div>
+                                    <small class="text-muted">{{ \Carbon\Carbon::create($book->updated_at)->diffForHumans() }}</small>
                                 </div>
-                                <small class="text-muted">9 mins</small>
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                    <h3>На данный момент книг нету</h3>
+                @endforelse
+
+                    {{ $books->links() }}
+
             </div>
         </div>
     </div>
-
 
 @endsection
