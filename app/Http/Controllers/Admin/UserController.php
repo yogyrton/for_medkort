@@ -30,7 +30,6 @@ class   UserController extends Controller
         User::query()->create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => \Hash::make($data['password']),
             'is_admin' => $data['is_admin'],
         ]);
 
@@ -53,7 +52,6 @@ class   UserController extends Controller
         $user->update([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => \Hash::make($data['password']),
             'is_admin' => $data['is_admin'],
         ]);
 

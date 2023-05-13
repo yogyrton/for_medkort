@@ -24,7 +24,6 @@ class UserUpdateRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:100',
             'email' => 'required|email',
-            'password' => 'required|min:3|max:10',
             'is_admin' => 'required',
         ];
     }
@@ -38,10 +37,6 @@ class UserUpdateRequest extends FormRequest
 
             'email.required' => 'Обязательно для заполнения',
             'email.email' => 'Должно быть email',
-
-            'password.required' => 'Обязательно для заполнения',
-            'password.min' => 'Минимум 3 символа',
-            'password.max' => 'Максимум 10 символов',
 
             'is_admin.required' => 'Обязательно для заполнения',
         ];

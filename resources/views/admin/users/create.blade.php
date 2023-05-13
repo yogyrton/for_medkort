@@ -31,17 +31,6 @@
         @enderror
 
 
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Пароль</label>
-            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1"
-                   aria-describedby="emailHelp" value="">
-            <div id="emailHelp" class="form-text">Минимум 3 символа, максимум 10, обязательно</div>
-        </div>
-
-        @error('password')
-        <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Роль</label>

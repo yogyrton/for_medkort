@@ -23,30 +23,32 @@
 
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ asset('/storage/' . $book->cover) }}"><title>
-                                    {{ $book->title }}</title>
-                                <rect width="100%" height="100%" fill="#55595c"/>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-                            </img>
+                            <img class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                 src="{{ asset('/storage/' . $book->cover) }}" alt="{{ $book->title }}">
 
                             <div class="card-body">
                                 <p class="card-text"><b>Название: </b>{{ $book->title }}</p>
+                                <p class="card-text"><b>Автор: </b>{{ $book->author }}</p>
+                                <p class="card-text"><b>Рейтинг: </b>{{ $book->rating }}</p>
                                 <p class="card-text"><b>Категория: </b>{{ $book->category->title }}</p>
                                 <p class="card-text"><b>Описание: </b>{{ $book->description }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть комментарии</button>
+                                        <a href="{{ route('show', $book) }}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
                                     </div>
                                     <small class="text-muted">{{ \Carbon\Carbon::create($book->updated_at)->diffForHumans() }}</small>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 @empty
+
                     <h3>На данный момент книг нету</h3>
+
                 @endforelse
 
-                    {{ $books->links() }}
+                {{ $books->links() }}
 
             </div>
         </div>

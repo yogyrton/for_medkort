@@ -48,7 +48,7 @@ class BookUpdateRequest extends FormRequest
             'description.min' => 'Минимум 3 символа',
             'description.max' => 'Максимум 100 символов',
 
-            'category_id.required' => 'Обязательно для заполнения',
+            'category_id.required' => 'Обязательно для заполнения, вначале создайте категорию',
 
             'cover.file' => 'Должен быть файлом',
             'cover.max' => 'Максимум 100 символов',

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -32,17 +33,18 @@ class BookFactory extends Factory
 
     private function rating()
     {
-        return mt_rand(0, 100);
+        return mt_rand(0, 10);
     }
 
     private function cover()
     {
-        return fake()->sentence;
-    }
+        $filepath = storage_path('app/public/covers');
 
-    private function category_id()
-    {
-        return 1;
+        if(!File::exists($filepath)){
+            File::makeDirectory($filepath);
+        }
+
+        return 'covers/' . fake()->image(storage_path('app/public/covers'),640,480, null, false);
     }
 
     public function definition(): array

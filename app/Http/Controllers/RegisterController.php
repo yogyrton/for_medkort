@@ -32,6 +32,6 @@ class RegisterController extends Controller
 
         NewUser::dispatch($user);
 
-        return redirect()->intended(route('main'));
+        return to_route('main');
     }
 }
